@@ -1,11 +1,15 @@
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) SOFTWARE ENGINEERING IMMERSIVE
-
 # Express Controllers
 
-### Learning Objectives
+![controller](https://thumbs.gfycat.com/DistinctTastyFossa-size_restricted.gif)
+
+## Overview
+
+In this lesson, we'll be learning about Express controllers. Controllers are functions that we build to handle specific requests. Instead of handling logic inline with our routes/endpoints, we build methods to handle that logic. The aim is to organize and reuse as much code as possible.
+
+## Objectives
 
 - Build Controller Functions
-- Separate Api Endpoint Controllers
+- Visualize and establish the relationship between controllers and routes.
 
 ## Setting Up the Server
 
@@ -44,14 +48,12 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(logger('dev'))
 
-
 // Routes go here
-
 
 app.listen(PORT, () => console.log(`Server running on ${PORT}`))
 ```
 
-Create a base route to test our server, add the following *below* our middleware and *above* the app.listen() on our PORT:
+Create a base route to test our server, add the following _below_ our middleware and _above_ the app.listen() on our PORT:
 
 ```js
 app.get('/', (request, response) => {
@@ -61,7 +63,19 @@ app.get('/', (request, response) => {
 
 Start your server by running `npm run dev`.
 
-Test this endpoint in your RESTful client by *sending* this request in Postman or Insomnia: `GET`: `http://localhost:3001/`
+Test this endpoint in your RESTful client by _sending_ this request in Postman or Insomnia: `GET`: `http://localhost:3001/`
+
+## What Are Controllers
+
+Controllers are methods that we create to handle how our server behaves during a request. They are in charge of sending back the requested information for a specific endpoint. We typically group them based on the actions that they perform and for the `router` that handles an endpoint or `route`. For example, if we have a `router` that handles all requests for a user ie. `log in`, `register`, `profile` etc.. We would create a controller to handle all of these endpoints. Our controller is a group of functions that will then handle the behavior for a specific `endpoint`.
+
+If our user requests to `log in`, we would have a controller method that handles only the log in functionality for our server.
+
+The following diagram shows the flow during the `request`/`response` lifecycle:
+
+![diagram](images/controller_flow.png)
+
+We want to keep our codebase as organized as possible. This helps us to later scale by adding features or functionality. By taking a simple functional approach, if we wanted to add a new feature, we could just add a new function or controller to handle that request.
 
 ## Creating Controllers
 
@@ -122,7 +136,7 @@ Now in our `GET` cats endpoint use the `getCats` function, our `catController` f
 app.get('/cats', catController.getCats)
 ```
 
-Now let's test this endpoint. In your rest client, perform a get request on: `http://localhost:3001/cats`
+Now let's test this endpoint. In your rest client, perform a `GET` request on: `http://localhost:3001/cats`
 
 You should recieve a 200 status code and a JSON object:
 
@@ -138,7 +152,7 @@ You've just successfully implemented your first controller function!
 
 You'll be creating your own controller functions, your work will be done in `CatController.js` and `app.js`. Once you create a function, don't forget to add it to our `module.exports`.
 
-- Create a controller function in `CatController.js` that takes in the `(req, res)` parameters and returns a JSON message: `Found Cat with an id of {whatever the id used}`. Create a `GET` route to get a cat by id `'/cats/:catId'` in `app.js`, and call its associated controller function that you __*exported*__ from `CatController.js`.
+- Create a controller function in `CatController.js` that takes in the `(req, res)` parameters and returns a JSON message: `Found Cat with an id of {whatever the id used}`. Create a `GET` route to get a cat by id `'/cats/:catId'` in `app.js`, and call its associated controller function that you **_exported_** from `CatController.js`.
 
 - In `CatController.js` create a function called `bothParams` that sends a response message of `"Getting {catName}, a cat with an id of {catId}."`. HINT: `console.log(req.params.catId, req.params.catName)`. Create a `GET` Route below all of your other routes in app.js, but just above the the app.listen for your PORT that has a path of `'/cats/:catName/details/:catId/'` and call your associated exported function. After this type in strange paths for multiple GET requests in Insomnia or Postman.
 
@@ -153,7 +167,6 @@ You'll be creating your own controller functions, your work will be done in `Cat
     "message": " My cats name is {whatever your cat name is}, he/she is {catAge} years old."
   }
   ```
- 
 
 - Create a function called `createCatDetails` that returns the request body to your REST client. HINT: `console.log(req.body)` to check.
   Create a `POST` route to display some information from the `request` body that calls this function.
@@ -167,5 +180,11 @@ You'll be creating your own controller functions, your work will be done in `Cat
     "breed": "mutt"
   }
   ```
-  
 
+## Recap
+
+In this lesson, we learned how to break up the functionality of our server into modular but effective pieces of code. By utilizing this pattern, adding features and functionality are much simpler and unintrusive. Express was meant to be lightweight and scalable, and by leveraging modular code, we can adhere to best practices and patterns.
+
+## Resources
+
+- [Express](https://expressjs.com/)
