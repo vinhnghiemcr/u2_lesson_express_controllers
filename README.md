@@ -6,7 +6,7 @@
 
 In this lesson, we'll be learning about Express controllers. Controllers are functions that we build to handle specific requests. Instead of handling logic inline with our routes/endpoints, we build methods to handle that logic. The aim is to organize and reuse as much code as possible.
 
-## Learning Objectives
+## Objectives
 
 - Build Controller Functions
 - Visualize and establish the relationship between controllers and routes.
