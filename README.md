@@ -11,9 +11,14 @@ In this lesson, we'll be learning about Express controllers. Controllers are fun
 - Build Controller Functions
 - Visualize and establish the relationship between controllers and routes.
 
-## Setting Up the Server
+## Getting Started
 
-Run `npm i` or `npm install`.
+- `Fork` & `Clone` this repository and `cd` into the directory
+- Run `npm install` to install our dependencies
+- Open in VSCode with `code .`
+- Run `npm run dev` to spin up our backend server
+
+## Setting Up the Server
 
 Add the following to your `app.js`:
 
