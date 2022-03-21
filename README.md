@@ -16,7 +16,7 @@ In this lesson, we'll be learning about Express controllers. Controllers are fun
 - `Fork` & `Clone` this repository and `cd` into the directory
 - Run `npm install` to install our dependencies
 - Open in VSCode with `code .`
-- Run `npm run dev` to spin up our backend server
+- Once we've built it out, we'll run `npm run dev` to spin up our backend server
 
 ## Setting Up the Server
 
